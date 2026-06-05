@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Peshang AI — Snake & Ladders</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orbs">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-mark">
+          <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#8A3FFC"/>
+                <stop offset="100%" stop-color="#2F80ED"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 2 L29 9 V23 L16 30 L3 23 V9 Z"
+                  fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linejoin="round"/>
+            <circle cx="16" cy="16" r="4" fill="url(#lg)"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Peshang AI</span>
+          <span class="brand-sub">Snake &amp; Ladders</span>
+        </div>
+      </div>
+      <div class="status-pill" id="turnPill">
+        <span class="dot" id="turnDot"></span>
+        <span id="turnText">Set up players to start</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <!-- Board -->
+      <div class="board-wrap card">
+        <canvas id="board" width="720" height="720" aria-label="Snake and Ladders board"></canvas>
+      </div>
+
+      <!-- Side panel -->
+      <aside class="sidepanel">
+        <div class="card panel">
+          <h2 class="panel-title">Players</h2>
+          <div class="player-count">
+            <label>Number of players</label>
+            <div class="seg">
+              <button data-count="2" class="seg-btn active">2</button>
+              <button data-count="3" class="seg-btn">3</button>
+              <button data-count="4" class="seg-btn">4</button>
+            </div>
+          </div>
+          <div id="playerList" class="player-list"></div>
+          <button id="startBtn" class="primary-btn">Start Game</button>
+        </div>
+
+        <div class="card panel dice-panel">
+          <h2 class="panel-title">Dice</h2>
+          <div class="dice-stage">
+            <div id="dice" class="die" aria-label="Die">
+              <div class="face f1"><span></span></div>
+              <div class="face f2"><span></span><span></span></div>
+              <div class="face f3"><span></span><span></span><span></span></div>
+              <div class="face f4"><span></span><span></span><span></span><span></span></div>
+              <div class="face f5"><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="face f6"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <button id="rollBtn" class="primary-btn" disabled>Roll Dice</button>
+          <div class="hint" id="hint">Press <kbd>Space</kbd> to roll</div>
+        </div>
+
+        <div class="card panel log-panel">
+          <h2 class="panel-title">Activity</h2>
+          <ul id="log" class="log"></ul>
+        </div>
+
+        <div class="card panel mini">
+          <label class="toggle">
+            <input type="checkbox" id="soundToggle" checked />
+            <span class="slider"></span>
+            <span>Sound effects</span>
+          </label>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Winner overlay -->
+  <div class="overlay hidden" id="winOverlay">
+    <div class="overlay-card">
+      <div class="overlay-glow"></div>
+      <h2>Victory</h2>
+      <p id="winText">Player 1 wins!</p>
+      <button id="playAgain" class="primary-btn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
